@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=100.0">
+    <title>JS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@500&display=swap" rel="stylesheet">
+    <style>
+        #heading {
+            border: .5vh solid rgb(101, 19, 19);
+            border-radius: .35vh;
+            background-color: lightyellow;
+            font-size: 2.1vw;
+            font-weight: bold;
+            font-family: 'Domine', serif;
+            padding-left: 4.5vw;
+            padding-top: 0.3px;
+            padding-bottom: 0.2vh;
+            margin-top: 5.0vh;
+            margin-bottom: 10vh;
+            margin-left: 9.0vw;
+            margin-right: 9.0vw;
+            color: rgb(188, 10, 10);
+            text-decoration: underline;
+            text-decoration-color: rgb(147, 4, 4);
+        }
+        #img {
+            /* border: .3vh solid red; */
+            margin-left: 5.5vw;
+            padding: 6.2vh 12vw;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7D8DI6A1oUjHm1QQ7gym_tiXtLiX8h7-iTpnXC4liLgIh2nQtE60GkaYQNwdpklgbd34&usqp=CAU');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .h2 {
+            padding: 10px;
+        }
+
+        #instruct {
+            margin: 1.8vh 30vw;
+            border: .5vw solid blueviolet;
+            padding-left: 5vw;
+            background-color: rgb(0, 255, 255);
+        }
+
+        #inst {
+            padding-left: 22%;
+            font-weight: bold;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-decoration: underline;
+        }
+
+        .instruction {
+            font-size: 1.4vw;
+            padding-right: 0.15vw;
+            font-weight: bold;
+            color: rgb(103, 103, 27);
+        }
+
+        #atb {
+            padding-left: 50px;
+            font-size: 22px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: large;
+            color: brown;
+            font-weight: bold;
+
+        }
+
+        #btn {
+            margin-left: 66vw;
+            font-size: 2.8vh;
+            font-weight: bold;
+            color: brown;
+        }
+
+        .Q {
+            margin: 1vh 20vw;
+            /* background-color: ; */
+        }
+
+        .Qno {
+            font-size: 2.5vw;
+            color: #7d327a;
+        }
+
+        .option {
+            font-size: 3vw;
+            color: red;
+            font-family: 'Anek Kannada', sans-serif;
+        }
+
+        #btn1 {
+            margin-left: 50vw;
+            font-family: 'Amaranth', sans-serif;
+            font-size: 2.2vw;
+            color: #931a8d;
+            font-weight: bold;
+        }
+
+        #marks {
+            margin-left: 3vw;
+            color: rgb(52, 106, 106);
+            font-weight: bold;
+            font-style: oblique;
+            font-size: 2vw;
+        }
+
+        .m {
+            margin-left: 500px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="heading">
+        <h2 id="h1">
+            <p class="h2">MULTIPLE-CHOICE QUIZ<span id="img"></span></p>
+        </h2>
+    </div>
+    <div id="instruct">
+        <h3 id="inst">INSTRUCTIONS</h3>
+        <div id="Info">
+            <p class="instruction">Total number of Questions : 5</p>
+            <p class="instruction">Time alloted for each question : 2 minutes</p>
+            <p class="instruction">Total time for the quiz : 10 minutes</p>
+            <p class="instruction">Each question carries 2 marks.</p>
+            <p class="instruction">FM : 10 </p>
+            <!-- <p>Maximum number of attempts : 2</p> -->
+        </div>
+        <div id="atb">
+            <p>All the Best!!</p>
+        </div>
+    </div>
+
+
+    <button id="btn" onclick="st()">Start</button>
+
+    <div id="qna">
+        <div id="Q1" class="Q">
+            <p id="Question1" class="Qno"><span id="1"></span>The tangent and normal to the ellipse
+                3x² + 5y² = 32 at the point P(2, 2) meet the x-axis at Q and R, respectively. Then the area (in sq.
+                units) of the triangle PQR is :</p>
+            <div id="rates1">
+                <div id="Q1o1" class="option"><input type="radio" id="q1o1" name="rate1" value="Fixed Rate"> <span
+                        id="Q1O1">Fixed
+                        Rate</span></div>
+                <div id="Q1o2" class="option"><input type="radio" id="q1o2" name="rate1" value="Variable Rate"> <span
+                        id="Q1O2">Variable
+                        Rate</span></div>
+                <div id="Q1o3" class="option"><input type="radio" id="q1o3" name="rate1" value="Multi Rate"> <span
+                        id="Q1O3">Multi
+                        Rate</span></div>
+                <div id="Q1o4" class="option"><input type="radio" id="q1o4" name="rate1" value="Multi Rate1"> <span
+                        id="Q1O4">Multi
+                        Rate1</span></div>
+            </div>
+        </div>
+        <div id="Q2" class="Q">
+            <p id="Question2" class="Qno"><span id="2"></span>Minimum number of times a fair coin must be tossed so that
+                the probability of getting at least one
+                head is more than 99% is :</p>
+            <div id="rates2">
+                <div id="Q2o1" class="option"><input type="radio" id="q2o1" name="rate2" value="Fixed Rate"> <span
+                        id="Q2O1">Fixed
+                        Rate</span></div>
+                <div id="Q2o2" class="option"><input type="radio" id="q2o2" name="rate2" value="Variable Rate"> <span
+                        id="Q2O2">Variable
+                        Rate</span></div>
+                <div id="Q2o3" class="option"><input type="radio" id="q2o3" name="rate2" value="Multi Rate"> <span
+                        id="Q2O3">Multi
+                        Rate</span></div>
+                <div id="Q2o4" class="option"><input type="radio" id="q2o4" name="rate2" value="Multi Rate1"> <span
+                        id="Q2O4">Multi
+                        Rate1</span></div>
+            </div>
+        </div>
+        <div id="Q3" class="Q">
+            <p id="Question3" class="Qno"><span id="3"></span>Suppose that 20 pillars of the same height have
+                been erected along the boundary of a circular
+                stadium. If the top of each pillar has been
+                connected by beams with the top of all its
+                non-adjacent pillars, then the total number beams
+                is :</p>
+            <div id="rates3">
+                <div id="Q3o1" class="option"><input type="radio" id="q3o1" name="rate3" value="Fixed Rate"> <span
+                        id="Q3O1">Fixed
+                        Rate</span></div>
+                <div id="Q3o2" class="option"><input type="radio" id="q3o2" name="rate3" value="Variable Rate"> <span
+                        id="Q3O2">Variable
+                        Rate</span></div>
+                <div id="Q3o3" class="option"><input type="radio" id="q3o3" name="rate3" value="Multi Rate"> <span
+                        id="Q3O3">Multi
+                        Rate</span></div>
+                <div id="Q3o4" class="option"><input type="radio" id="q3o4" name="rate3" value="Multi Rate1"> <span
+                        id="Q3O4">Multi
+                        Rate1</span></div>
+            </div>
+        </div>
+        <div id="Q4" class="Q">
+            <p id="Question4" class="Qno"><span id="4"></span>Let a1, a2, a3,......be an A. P. with a6 = 2. Then the
+                common difference of this A. P., which maximises
+                the product a1a4a5 is :</p>
+            <div id="rates4">
+                <div id="Q4o1" class="option"><input type="radio" id="q4o1" name="rate4" value="Fixed Rate"> <span
+                        id="Q4O1">Fixed
+                        Rate</span></div>
+                <div id="Q4o2" class="option"><input type="radio" id="q4o2" name="rate4" value="Variable Rate"> <span
+                        id="Q4O2">Variable
+                        Rate</span></div>
+                <div id="Q4o3" class="option"><input type="radio" id="q4o3" name="rate4" value="Multi Rate"> <span
+                        id="Q4O3">Multi
+                        Rate</span></div>
+                <div id="Q4o4" class="option"><input type="radio" id="q4o4" name="rate4" value="Multi Rate1"> <span
+                        id="Q4O4">Multi
+                        Rate1</span></div>
+            </div>
+        </div>
+        <div id="Q5" class="Q">
+            <p id="Question5" class="Qno"><span id="5"></span>If 5x + 9 = 0 is the directrix of the hyperbola
+                16x² - 9y²= 144, then its corresponding focus
+                is :</p>
+            <div id="rates5">
+                <div id="Q5o1" class="option"><input type="radio" id="q5o1" name="rate5" value="Fixed Rate"> <span
+                        id="Q5O1">Fixed
+                        Rate</span>
+                </div>
+                <div id="Q5o2" class="option"><input type="radio" id="q5o2" name="rate5" value="Variable Rate"> <span
+                        id="Q5O2">Variable
+                        Rate</span></div>
+                <div id="Q5o3" class="option"><input type="radio" id="q5o3" name="rate5" value="Multi Rate"> <span
+                        id="Q5O3">Multi
+                        Rate</span></div>
+                <div id="Q5o4" class="option"><input type="radio" id="q5o4" name="rate5" value="Multi Rate1"> <span
+                        id="Q5O4">Multi
+                        Rate1</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="res">
+        <button id="btn1" onclick="sbt()">Submit the Quiz to get the Result!</button>
+    </div>
+    <div id="marks">
+        <p class="m">Score: <span id="s"></span>/10</p>
+        <p id="cmmts" class="m"></p>
+    </div>
+
+    <script>
+        var ct = 1;
+        var ct1 = 1;
+        document.getElementById('res').style.display = 'none';
+        document.getElementById('marks').style.display = 'none';
+        for (ct = 1; ct <= 5; ct++)
+            document.getElementById('Question' + ct).style.display = 'none';
+        for (ct = 1; ct <= 5; ct++) {
+            for (ct1 = 1; ct1 <= 4; ct1++) {
+                document.getElementById('q' + ct + 'o' + ct1).style.display = 'none';
+                document.getElementById('Q' + ct + 'O' + ct1).style.display = 'none';
+            }
+        }
+        var h = 1;
+        var x = [1, 2, 3, 4, 5];
+        var o = [1, 2, 3, 4];
+        var x1 = [1, 2, 3, 4, 5];
+        var o1 = [1, 2, 3, 4];
+        var ca = [3, 3, 2, 1, 4];
+        var r;
+        var i1;
+        for (r = 0; r < 5; r++) {
+            i1 = Math.floor((Math.random() * (x.length - r)));
+            x1[r] = x[i1];
+            var temp = x[i1];
+            x[i1] = x[4 - r];
+            x[4 - r] = temp;
+        }
+        console.log(x1);
+        var qn = 0;
+        var ques;
+        var score = 0;
+        var w = 0;
+        var op1, op2, op3, op4, Op1, Op2, Op3, Op4;
+        var m = ["14/3", "16/3", "68/15", "34/15", "5", "6", "7", "8", "210", "170", "190", "180", "8/5", "6/5", "3/2", "2/3", "(-4,0)", "(-5,1)", "(-4,1)", "(-5,0)"];
+        function hide() {
+            document.getElementById('btn').style.display = 'none';
+            w = 0;
+            o = [1, 2, 3, 4];
+            o1 = [1, 2, 3, 4];
+            for (r = 0; r < 4; r++) {
+                i1 = Math.floor((Math.random() * (o.length - r)));
+                o1[r] = o[i1];
+                var t = o[i1];
+                o[i1] = o[3 - r];
+                o[3 - r] = t;
+            }
+            console.log(o1);
+            ques = document.getElementById('Question' + x1[qn]);
+            op1 = document.getElementById('q' + x1[qn] + 'o1');
+            op2 = document.getElementById('q' + x1[qn] + 'o2');
+            op3 = document.getElementById('q' + x1[qn] + 'o3');
+            op4 = document.getElementById('q' + x1[qn] + 'o4');
+            op1.style.display = 'inline';
+            op2.style.display = 'inline';
+            op3.style.display = 'inline';
+            op4.style.display = 'inline';
+            document.getElementById(x1[qn]).innerHTML = "Question " + (qn+1) + ")  ";
+            Op1 = document.getElementById('Q' + x1[qn] + 'O1');
+            Op2 = document.getElementById('Q' + x1[qn] + 'O2');
+            Op3 = document.getElementById('Q' + x1[qn] + 'O3');
+            Op4 = document.getElementById('Q' + x1[qn] + 'O4');
+            ques.style.display = 'block';
+            Op1.innerHTML = m[x1[qn] * 4 - 4 + o1[0] - 1];
+            Op1.style.display = 'block';
+            Op2.innerHTML = m[x1[qn] * 4 - 4 + o1[1] - 1];
+            Op2.style.display = 'block';
+            Op3.innerHTML = m[x1[qn] * 4 - 4 + o1[2] - 1];
+            Op3.style.display = 'block';;
+            Op4.innerHTML = m[x1[qn] * 4 - 4 + o1[3] - 1];
+            Op4.style.display = 'block';
+
+            qn++;
+            setTimeout(gr, 1000);
+        }
+        function gr() {
+            var v = ca[x1[qn - 1] - 1];
+            var v1 = o1.indexOf(v) + 1;
+            if (document.getElementById('q' + x1[qn - 1] + 'o' + v1).checked)
+                score += 2;
+            ques.style.display = 'none';
+            op1.style.display = 'none';
+            Op1.style.display = 'none';
+            op2.style.display = 'none';
+            Op2.style.display = 'none';
+            op3.style.display = 'none';
+            Op3.style.display = 'none';
+            op4.style.display = 'none';
+            Op4.style.display = 'none';
+            if (qn < 5)
+                hide();
+            if (qn == 5) {
+                setTimeout(func, 1000);
+            }
+
+        }
+        function func() {
+            console.log(score);
+            document.getElementById('res').style.display = 'block';
+        }
+        function sbt() {
+            document.getElementById('btn1').style.display = 'none';
+            document.getElementById('marks').style.display = 'block';
+            document.getElementById('s').innerHTML = score;
+            if (score == 0)
+                document.getElementById('cmmts').innerHTML = "Better luck next time.";
+            if (score == 2)
+                document.getElementById('cmmts').innerHTML = "Better luck next time. Thanks for attempting.";
+            if (score == 4 || score == 6)
+                document.getElementById('cmmts').innerHTML = "Good Attempt";
+            if (score == 8 || score == 10)
+                document.getElementById('cmmts').innerHTML = "CONGRATULATIONS! Keep it up!";
+
+        }
+        function st() {
+            let c1 = confirm("You have 10 minutes for the quiz.");
+            if (c1) {
+                let c2 = confirm("Do you want to attempt the quiz now?");
+                if (c2) {
+                    prompt("Please enter your name here.");
+                    alert("The Quiz will start now");
+                    hide();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
