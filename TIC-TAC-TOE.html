@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIC-TAC-TOE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Adamina&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
+    <style>
+        * {
+            background-color: rgb(227, 237, 244);
+        }
+
+        #H {
+            background-color: rgb(172, 121, 44);
+            display: flex;
+            margin: 3.5vh 20vw;
+            border-left: 0.3vw solid red;
+            border-right: 0.3vw solid red;
+            border-top: 0.4vh solid red;
+            border-bottom: 0.4vh solid red;
+            border-radius: 1vw;
+            justify-content: center;
+            padding: 4.8vh 10vw;
+            font-size: 3vw;
+            font-family: 'Kanit', sans-serif;
+            font-family: 'Adamina', serif;
+        }
+
+        #grid {
+            margin: 1vh 10vw;
+            display: grid;
+            grid-template-rows: repeat(3, 14vh);
+            grid-template-columns: repeat(3, 11vw);
+            justify-content: center;
+            padding-top: 10vh;
+            padding-bottom: 10vh;
+            background-color: rgb(56, 156, 122);
+        }
+
+        .play {
+            border: 3px solid black;
+            text-align: center;
+            font-size: 2.3vw;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(0, 0, 255);
+        }
+
+        .play:hover {
+            background-color: aqua;
+        }
+
+        #st {
+            font-size: 1.4vw;
+            margin: 5vh 38vw;
+            font-weight: bold;
+        }
+
+        #st:hover {
+            font-size: 1.6vw;
+            font-family: 'Kanit', sans-serif;
+            background-color: rgb(237, 221, 77);
+            font-weight: bold;
+        }
+
+        .turn {
+            margin-top: 5vh;
+            padding-left: 65vw;
+            font-size: 1.9vw;
+            font-family: 'Lobster', cursive;
+            color: brown;
+        }
+
+        #w1 {
+            margin-top: 4.5vh;
+            font-size: 1.6vw;
+            font-family: 'Domine', serif;
+            color: rgb(127, 22, 224);
+            font-weight: bold;
+            
+        }
+        #winner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="heading">
+        <h1 id="H">TIC-TAC-TOE</h1>
+    </div>
+
+    <div class="game">
+
+        <div id="grid">
+            <div class="play" id="p1"></div>
+            <div class="play" id="p2"></div>
+            <div class="play" id="p3"></div>
+            <div class="play" id="p4"></div>
+            <div class="play" id="p5"></div>
+            <div class="play" id="p6"></div>
+            <div class="play" id="p7"></div>
+            <div class="play" id="p8"></div>
+            <div class="play" id="p9"></div>
+        </div>
+        <div id="start">
+            <button id="st">Click here to Start the game!</button>
+        </div>
+        <div class="turn" id="t1">Turn for player 1</div>
+        <div class="turn" id="t2">Turn for player 2</div>
+        <div id="winner" class="won">
+            <div id="w1">Congratulations!! Player<span id="w"></span> is the Winner! </div>
+        </div>
+    </div>
+
+    <script>
+        var a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let w = document.getElementById('w1');
+        let btn = document.getElementById('st');
+        let t1 = document.getElementById('t1');
+        let t2 = document.getElementById('t2');
+        t1.style.display = 'none';
+        t2.style.display = 'none';
+        w.style.display = 'none';
+        var win = 0;
+        var win1 = 0;
+        var win2 = 0;
+        let p1 = document.getElementById('p1');
+        let p2 = document.getElementById('p2');
+        let p3 = document.getElementById('p3');
+        let p4 = document.getElementById('p4');
+        let p5 = document.getElementById('p5');
+        let p6 = document.getElementById('p6');
+        let p7 = document.getElementById('p7');
+        let p8 = document.getElementById('p8');
+        let p9 = document.getElementById('p9');
+        btn.addEventListener('click', function run() {
+            btn.style.display = 'none';
+            game();
+        });
+        function gamewin() {
+            var j = 0;
+            for (j = 0; j <= 6; j += 3) {
+                if ((a[j] >= 10 && a[j] <= 18) && (a[j + 1] >= 10 && a[j + 1] <= 18) && (a[j + 2] >= 10 && a[j + 2] <= 18)) {
+                    win = 1;
+                    win1 = 1;
+                    return;
+                }
+            }
+
+            for (j = 0; j <= 6; j += 3) {
+                if ((a[j] >= 19 && a[j] <= 27) && (a[j + 1] >= 19 && a[j + 1] <= 27) && (a[j + 2] >= 19 && a[j + 2] <= 27)) {
+                    win = 1;
+                    win2 = 1;
+                    return;
+                }
+            }
+
+            for (j = 0; j <= 2; j += 1) {
+                if ((a[j] >= 10 && a[j] <= 18) && (a[j + 3] >= 10 && a[j + 3] <= 18) && (a[j + 6] >= 10 && a[j + 6] <= 18)) {
+                    win = 1;
+                    win1 = 1;
+                    return;
+                }
+            }
+
+            for (j = 0; j <= 2; j += 1) {
+                if ((a[j] >= 19 && a[j] <= 27) && (a[j + 3] >= 19 && a[j + 3] <= 27) && (a[j + 6] >= 19 && a[j + 6] <= 27)) {
+                    win = 1;
+                    win2 = 1;
+                    return;
+                }
+            }
+
+            if ((a[0] >= 10 && a[0] <= 18) && (a[4] >= 10 && a[4] <= 18) && (a[8] >= 10 && a[8] <= 18)) {
+                win = 1;
+                win1 = 1;
+                return;
+            }
+            if ((a[0] >= 19 && a[0] <= 27) && (a[4] >= 19 && a[4] <= 27) && (a[8] >= 19 && a[8] <= 27)) {
+                win = 1;
+                win2 = 1;
+                return;
+            }
+            if ((a[2] >= 10 && a[2] <= 18) && (a[4] >= 10 && a[4] <= 18) && (a[6] >= 10 && a[6] <= 18)) {
+                win = 1;
+                win1 = 1;
+                return;
+            }
+            if ((a[2] >= 19 && a[2] <= 27) && (a[4] >= 19 && a[4] <= 27) && (a[6] >= 19 && a[6] <= 27)) {
+                win = 1;
+                win2 = 1;
+                return;
+            }
+            var c = 0;
+            for (j = 0; j <= 8; j++) {
+                if (a[j] >= 10)
+                    c++;
+            }
+            if (c == 9) {
+                win = 1;
+                return;
+            }
+        }
+        function game() {
+            var i = 0;
+            move(1);
+        }
+        function move(x) {
+            if (x == 1)
+                t1.style.display = 'block';
+            if (x == 2)
+                t2.style.display = 'block';
+            p1.addEventListener('click', function run1() {
+                if (a[0] == 1) {
+                    if (x == 1) {
+                        p1.innerHTML = "X";
+                        a[0] = 10;
+                        t1.style.display = 'none';
+                        x = 5;
+                        gamewin();
+                        if (win == 1)
+                            winner();
+                        else
+                            move(2);
+                        return;
+                    }
+                    if (x == 2) {
+                        p1.innerHTML = "0";
+                        t2.style.display = 'none';
+                        a[0] = 19;
+                        x = 5;
+                        gamewin();
+                        if (win == 1)
+                            winner();
+                        else
+                            move(1);
+                        return;
+                    }
+                }
+            });
+
+            p2.addEventListener('click', function run2() {
+                if (a[1] == 2) {
+                    if (x == 1) {
+                        p2.innerHTML = "X";
+                        a[1] = 11;
+                        t1.style.display = 'none';
+                        x = 5;
+                        gamewin();
+                        if (win == 1)
+                            winner();
+                        else
+                            move(2);
+                        return;
+                    }
+                    if (x == 2) {
+                        p2.innerHTML = "0";
+                        a[1] = 20;
+                        t2.style.display = 'none';
+                        x = 5;
+                        gamewin();
+                        if (win == 1)
+                            winner();
+                        else
+                            move(1);
+                        return;
+                    }
+                }
+            });
+
+            p3.addEventListener('click', function run2() {
+                if (a[2] == 3) {
+                    if (x == 1) {
+                        p3.innerHTML = "X";
+                        a[2] = 12;
+                        t1.style.display = 'none';
+                        x = 5;
+                        gamewin();
+                        if (win == 1)
+                            winner();
+                        else
+                            move(2);
+                        return;
+                    }
+                    if (x == 2) {
+                        p3.innerHTML = "0";
+                        a[2] = 21;
+                        t2.style.display = 'none';
+                        x = 5
+                        gamewin();
+                        if (win == 1)
+                            winner();
+                        else
+                            move(1);
+                        return;
+                    }
+                }
+            });
+
+            p4.addEventListener('click', function run2() {
+                if (a[3] == 4) {
+                    if (x == 1) {
+                        p4.innerHTML = "X";
+                        a[3] = 13;
+                        t1.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(2);
+                        return;
+                    }
+                    if (x == 2) {
+                        p4.innerHTML = "0";
+                        a[3] = 22;
+                        t2.style.display = 'none';
+                        x = 5;
+                        gamewin();
+                        if (win == 1)
+                            winner();
+                        else
+                            move(1);
+                        return;
+                    }
+                }
+            });
+
+            p5.addEventListener('click', function run2() {
+                if (a[4] == 5) {
+                    if (x == 1) {
+                        p5.innerHTML = "X";
+                        a[4] = 14;
+                        t1.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(2);
+                        return;
+                    }
+                    if (x == 2) {
+                        p5.innerHTML = "0";
+                        a[4] = 23;
+                        t2.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(1);
+                        return;
+                    }
+                }
+            });
+
+            p6.addEventListener('click', function run2() {
+                if (a[5] == 6) {
+                    if (x == 1) {
+                        p6.innerHTML = "X";
+                        a[5] = 15;
+                        t1.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(2);
+                        return;
+                    }
+                    if (x == 2) {
+                        p6.innerHTML = "0";
+                        a[5] = 24;
+                        t2.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(1);
+                        return;
+                    }
+                }
+            });
+
+            p7.addEventListener('click', function run2() {
+                if (a[6] == 7) {
+                    if (x == 1) {
+                        p7.innerHTML = "X";
+                        a[6] = 16;
+                        t1.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(2);
+                        return;
+                    }
+                    if (x == 2) {
+                        p7.innerHTML = "0";
+                        a[6] = 25;
+                        t2.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(1);
+                        return;
+                    }
+                }
+            });
+
+            p8.addEventListener('click', function run2() {
+                if (a[7] == 8) {
+                    if (x == 1) {
+                        p8.innerHTML = "X";
+                        a[7] = 17;
+                        t1.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(2);
+                        return;
+                    }
+                    if (x == 2) {
+                        p8.innerHTML = "0";
+                        a[7] = 26;
+                        t2.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(1);
+                        return;
+                    }
+                }
+            });
+
+            p9.addEventListener('click', function run2() {
+                if (a[8] == 9) {
+                    if (x == 1) {
+                        p9.innerHTML = "X";
+                        a[8] = 18;
+                        t1.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(2);
+                        return;
+                    }
+                    if (x == 2) {
+                        p9.innerHTML = "0";
+                        a[8] = 27;
+                        t2.style.display = 'none';
+                        gamewin();
+                        x = 5;
+                        if (win == 1)
+                            winner();
+                        else
+                            move(1);
+                        return;
+                    }
+                }
+            });
+        }
+        function winner() {
+            w.style.display = 'block';
+            if (win1 == 1)
+                document.getElementById('w').innerHTML = "1";
+            if (win2 == 1)
+                document.getElementById('w').innerHTML = "2";
+            if (win1 == 0 && win2 == 0) {
+                w.innerHTML = "Well played! It's a TIE";
+            }
+        }
+    </script>
+</body>
+
+</html>
