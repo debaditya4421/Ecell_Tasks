@@ -40,6 +40,7 @@
             text-decoration: underline;
             text-decoration-color: rgb(147, 4, 4);
         }
+
         .h2 {
             padding: 10px;
         }
@@ -127,7 +128,13 @@
 
         #header {
             border: 3px solid black;
-            
+
+        }
+
+        .time {
+            float: right;
+            font-size: 2.9vw;
+            padding-right: 2vw;
         }
     </style>
 </head>
@@ -135,7 +142,7 @@
 <body>
 
     <div id="header">
-        <div id="heading">
+        <div  id="heading">
             <h2 id="h1">
                 <p class="h2">MULTIPLE-CHOICE QUIZ</p>
 
@@ -156,10 +163,15 @@
             </div>
         </div>
 
-        <button id="btn" onclick="st()">Start</button>
+        <button id="btn" onclick="start()">Start</button>
     </div>
 
     <div id="qna">
+        <div class="time">
+            <span id="mins">02</span>
+            <span id="t">:</span>
+            <span id="secs">00</span>
+        </div>
         <div id="Q1" class="Q">
             <p id="Question1" class="Qno"><span id="1"></span>The tangent and normal to the ellipse
                 3x² + 5y² = 32 at the point P(2, 2) meet the x-axis at Q and R, respectively. Then the area (in sq.
@@ -250,6 +262,11 @@
     </div>
 
     <script>
+        let min = document.getElementById('mins');
+        let sec = document.getElementById('secs');
+        min.style.display = 'none';
+        sec.style.display = 'none';
+        document.getElementById('t').style.display = 'none';
         var ct = 1;
         var ct1 = 1;
         document.getElementById('res').style.display = 'none';
@@ -281,9 +298,39 @@
         var ques;
         var score = 0;
         var w = 0;
+        let t = 120;
         var op1, op2, op3, op4, Op1, Op2, Op3, Op4;
         var m = ["14/3", "16/3", "68/15", "34/15", "5", "6", "7", "8", "210", "170", "190", "180", "8/5", "6/5", "3/2", "2/3", "(-4,0)", "(-5,1)", "(-4,1)", "(-5,0)"];
+        function timer() {
+            t--;
+            if (t >= 70) {
+                min.innerHTML = "01";
+                sec.innerHTML = t - 60;
+            }
+            if (t >= 61 && t < 70) {
+                min.innerHTML = "01";
+                sec.innerHTML = "0" + (t - 60);
+            }
+            if (t == 60) {
+                min.innerHTML = "01";
+                sec.innerHTML = "00";
+            }
+            if (t >= 10 && t < 60) {
+                min.innerHTML = "00";
+                sec.innerHTML = t;
+            }
+            if (t >= 0 && t < 10) {
+                min.innerHTML = "00";
+                sec.innerHTML = "0" + (t);
+            }
+            if (t == 0)
+                t=120;
+        }
         function hide() {
+            t = 120;
+            min.style.display = 'inline';
+            sec.style.display = 'inline';
+            document.getElementById('t').style.display = 'inline';
             document.getElementById('btn').style.display = 'none';
             w = 0;
             o = [1, 2, 3, 4];
@@ -344,6 +391,10 @@
 
         }
         function func() {
+            clearInterval(time);
+            min.style.display = 'none';
+            sec.style.display = 'none';
+            document.getElementById('t').style.display = 'none';
             document.getElementById('res').style.display = 'block';
         }
         function sbt() {
@@ -360,7 +411,7 @@
                 document.getElementById('cmmts').innerHTML = "CONGRATULATIONS! Keep it up!";
 
         }
-        function st() {
+        function start() {
             let c1 = confirm("You have 10 minutes for the quiz.");
             if (c1) {
                 let c2 = confirm("Do you want to attempt the quiz now?");
@@ -368,6 +419,7 @@
                     prompt("Please enter your name here.");
                     alert("The Quiz will start now");
                     hide();
+                    time = setInterval(timer, 1000);
                 }
             }
         }
