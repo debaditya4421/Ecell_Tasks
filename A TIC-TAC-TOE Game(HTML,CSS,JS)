@@ -37,6 +37,8 @@
             font-size: 3vw;
             font-family: 'Kanit', sans-serif;
             font-family: 'Adamina', serif;
+            color: rgb(22, 52, 185);
+            font-weight: bold;
         }
 
         #grid {
@@ -69,6 +71,7 @@
             font-size: 1.4vw;
             margin: 5vh 38vw;
             font-weight: bold;
+            color: rgb(157, 104, 6);
         }
 
         #st:hover {
@@ -99,6 +102,17 @@
             justify-content: center;
             align-items: center;
         }
+        #rst:hover{
+            font-size: 1.95vw;
+            background-color: rgb(43, 43, 177);
+        }
+        #rst{
+            margin-left: 90vw;
+            font-size: 1.8vw;
+            background-color: rgb(57, 55, 55);
+            color: whitesmoke;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -121,10 +135,13 @@
             <div class="play" id="p9"></div>
         </div>
         <div id="start">
-            <button id="st">Click here to Start the game!</button>
+            <button id="st" onclick="run()">Click here to Start the game!</button>
         </div>
         <div class="turn" id="t1">Turn for player 1</div>
         <div class="turn" id="t2">Turn for player 2</div>
+        <div id="re">
+            <button id="rst">Restart</button>
+        </div>
         <div id="winner" class="won">
             <div id="w1">Congratulations!! Player<span id="w"></span> is the Winner! </div>
         </div>
@@ -133,12 +150,15 @@
     <script>
         var a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         let w = document.getElementById('w1');
+        let ret = document.getElementById('rst');
         let btn = document.getElementById('st');
         let t1 = document.getElementById('t1');
         let t2 = document.getElementById('t2');
         t1.style.display = 'none';
         t2.style.display = 'none';
         w.style.display = 'none';
+        rst.style.display = 'none';
+        var ct1=0;
         var win = 0;
         var win1 = 0;
         var win2 = 0;
@@ -151,10 +171,29 @@
         let p7 = document.getElementById('p7');
         let p8 = document.getElementById('p8');
         let p9 = document.getElementById('p9');
-        btn.addEventListener('click', function run() {
-            btn.style.display = 'none';
-            game();
+        rst.addEventListener('click', function rn() {
+            win=0;
+            win1=0;
+            win2=0;
+            t1.style.display = 'none';
+            t2.style.display = 'none';
+            w.style.display = 'none';
+            a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+            var k=0;
+            for(k=1;k<=9;k++){
+                document.getElementById('p'+k).innerHTML = "";
+            }
+            run();
         });
+        function run() {
+            btn.style.display = 'none';
+            rst.style.display = 'block';
+            game();
+            if (ct1==1){
+                ct1==0;
+                rn();
+            }
+        }
         function gamewin() {
             var j = 0;
             for (j = 0; j <= 6; j += 3) {
@@ -487,6 +526,11 @@
                         return;
                     }
                 }
+            });
+            rst.addEventListener('click', function rn1() {
+                x=6;
+                ct1=1;
+                return;
             });
         }
         function winner() {
