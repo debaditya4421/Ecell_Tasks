@@ -2,6 +2,8 @@
 
 TASK 6)A Basic Tic-Tac-Toe game using JS. At the end of the game, the application declares the winner or declare it a tie.
 
+The game is Player1 vs Player2. The players have to click on their desired box on their turn for that move. Once somebody wins, the game will stop and the winner will be declared. In case of a tie, it will also be shown.
+Also, the game can be restarted at any point of time, using the restart button.
 
 (All the 3 parts of the code: Html, Css, JS are in the same file named "TIC-TAC-TOE Game(HTML,CSS,JS)")
 
